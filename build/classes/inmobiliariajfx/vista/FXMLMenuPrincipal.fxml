@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="827.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inmobiliariajfx.controlador.FXMLMenuPrincipalController">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="1243.0" style="-fx-background-color: #34495E;">
+         <children>
+            <Label layoutX="289.0" layoutY="51.0" text="INMOBILIARIA CARPINCHO" textFill="WHITE">
+               <font>
+                  <Font name="Gloucester MT Extra Condensed" size="83.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="141.0" fitWidth="251.0" layoutX="22.0" layoutY="30.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../recursos/logo.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1044.0" layoutY="25.0" onMouseClicked="#imgCerrarSesion" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../recursos/salirSesion.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutY="200.0" prefHeight="122.0" prefWidth="1243.0" style="-fx-background-color: #707B7C;">
+         <children>
+            <Label fx:id="lbBienvenido" layoutX="114.0" layoutY="45.0" text="Bienvenido: ">
+               <font>
+                  <Font name="Yu Gothic Regular" size="27.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="99.0" fitWidth="95.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../recursos/user.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClicAgendarCita" prefHeight="443.0" prefWidth="263.0" style="-fx-background-color: black;" text="AGENDAR CITAS" textFill="WHITE">
+         <font>
+            <Font name="Gloucester MT Extra Condensed" size="37.0" />
+         </font>
+      </Button>
+      <Button alignment="BOTTOM_CENTER" layoutX="490.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClicVerCitas" prefHeight="443.0" prefWidth="263.0" style="-fx-background-color: black;" text="VER CITAS" textFill="WHITE">
+         <font>
+            <Font name="Gloucester MT Extra Condensed" size="52.0" />
+         </font>
+      </Button>
+      <Button alignment="BOTTOM_CENTER" layoutX="773.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClicVerInmuebles" prefHeight="443.0" prefWidth="263.0" style="-fx-background-color: black;" text="VER INMUEBLES" textFill="WHITE">
+         <font>
+            <Font name="Gloucester MT Extra Condensed" size="39.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="187.0" fitWidth="251.0" layoutX="213.0" layoutY="471.0" onMouseClicked="#imgClicAgendarCitas" pickOnBounds="true">
+         <image>
+            <Image url="@../recursos/regcitas.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="187.0" fitWidth="251.0" layoutX="496.0" layoutY="471.0" onMouseClicked="#imgClicVerCitas" pickOnBounds="true">
+         <image>
+            <Image url="@../recursos/verCitas.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="187.0" fitWidth="251.0" layoutX="781.0" layoutY="471.0" onMouseClicked="#imgClicVerInmuebles" pickOnBounds="true">
+         <image>
+            <Image url="@../recursos/verInmuebles.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

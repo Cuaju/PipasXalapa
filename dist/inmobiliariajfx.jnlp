@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="inmobiliariajfx.jnlp">
+  <information>
+    <title>inmobiliariajfx</title>
+    <vendor>Cuauhtemoc Calderon</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="inmobiliariajfx.jar" size="579442" download="eager" />
+    <jar href="lib\mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="inmobiliariajfx.Inmobiliariajfx"  name="inmobiliariajfx" />
+  <update check="always"/>
+</jnlp>
