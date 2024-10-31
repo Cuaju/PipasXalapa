@@ -10,37 +10,37 @@
 
 <AnchorPane id="AnchorPane" prefHeight="755.0" prefWidth="1090.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inmobiliariajfx.controlador.FXMLIniciarSesionController">
    <children>
-      <ImageView fitHeight="756.0" fitWidth="551.0" pickOnBounds="true">
+      <ImageView fitHeight="756.0" fitWidth="672.0" pickOnBounds="true">
          <image>
-            <Image url="@../recursos/casaLogin.jpg" />
+            <Image url="@../recursos/fondoAgua.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="200.0" fitWidth="310.0" layoutX="673.0" layoutY="82.0" pickOnBounds="true">
+      <ImageView fitHeight="200.0" fitWidth="310.0" layoutX="717.0" layoutY="69.0" pickOnBounds="true">
          <image>
-            <Image url="@../recursos/logoInmobiliaria.jpg" />
+            <Image url="@../recursos/logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="716.0" layoutY="235.0" text="INMOBILIARIA CARPINCHO">
+      <Label layoutX="786.0" layoutY="269.0" text="AGUA XALAPA" textFill="#1fa4f2">
          <font>
-            <Font name="Gloucester MT Extra Condensed" size="28.0" />
+            <Font name="Gloucester MT Extra Condensed" size="39.0" />
          </font>
       </Label>
-      <Label layoutX="716.0" layoutY="328.0" text="Usuario:">
+      <Label layoutX="759.0" layoutY="331.0" text="Usuario:">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="tfUsuario" layoutX="716.0" layoutY="363.0" prefHeight="31.0" prefWidth="225.0" promptText="Usuario..." />
-      <Label layoutX="716.0" layoutY="448.0" text="Contraseña:">
+      <TextField fx:id="tfUsuario" layoutX="759.0" layoutY="366.0" prefHeight="31.0" prefWidth="225.0" promptText="Usuario..." />
+      <Label layoutX="759.0" layoutY="451.0" text="Contraseña:">
          <font>
             <Font name="Microsoft JhengHei UI Light" size="21.0" />
          </font>
       </Label>
-      <Button layoutX="729.0" layoutY="560.0" mnemonicParsing="false" onAction="#btnClicIniciarSesion" prefHeight="45.0" prefWidth="203.0" style="-fx-background-color: black;" text="Iniciar Sesion" textFill="WHITE">
+      <Button layoutX="770.0" layoutY="565.0" mnemonicParsing="false" onAction="#btnClicIniciarSesion" prefHeight="45.0" prefWidth="203.0" style="-fx-background-color: lightblue;" text="Iniciar Sesion" textFill="WHITE">
          <font>
             <Font name="Nirmala UI" size="15.0" />
          </font>
       </Button>
-      <PasswordField fx:id="pfContrasena" layoutX="716.0" layoutY="494.0" prefHeight="31.0" prefWidth="225.0" promptText="Contraseña..." />
+      <PasswordField fx:id="pfContrasena" layoutX="759.0" layoutY="497.0" prefHeight="31.0" prefWidth="225.0" promptText="Contraseña..." />
    </children>
 </AnchorPane>

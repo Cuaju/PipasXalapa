@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="507.0" prefWidth="1133.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inmobiliariajfx.controlador.FXMLInmueblesController">
    <children>
-      <Pane prefHeight="96.0" prefWidth="1133.0" style="-fx-background-color: #34495E;">
+      <Pane prefHeight="96.0" prefWidth="1133.0" style="-fx-background-color: lightblue;">
          <children>
             <Label fx:id="lbTitulo" layoutX="23.0" layoutY="14.0" text="SERVICIO DE AGUA EN COLONIAS" textFill="#f2f2f2">
                <font>
@@ -19,7 +19,7 @@
             </Label>
             <ImageView fitHeight="90.0" fitWidth="78.0" layoutX="1041.0" layoutY="3.0" onMouseClicked="#imgClicMenuPrincipal" pickOnBounds="true">
                <image>
-                  <Image url="@../recursos/casaPNGiconojpg.jpg" />
+                  <Image url="@../recursos/casaicono.png" />
                </image>
             </ImageView>
          </children>
