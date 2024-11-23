@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class PipaDAO {
     
-    public static HashMap<String, Object> guardarCita(Pipa cita){
+    public static HashMap<String, Object> guardarPipa(Pipa pipa){
         HashMap<String, Object> respuesta = new HashMap();
         respuesta.put("error", true);
         Connection conexionBD = ConexionBD.obtenerConexion();
@@ -31,17 +31,17 @@ public class PipaDAO {
                 String sentencia = "INSERT INTO cita (fecha, hora, idCliente, idInmueble) "
                         + "VALUES (?,?,?,?)";
                 PreparedStatement prepararSentencia = conexionBD.prepareStatement(sentencia);
-                prepararSentencia.setString(1, cita.getFecha());
-                prepararSentencia.setString(2, cita.getHora());
-                prepararSentencia.setInt(3, cita.getIdCliente());
-                prepararSentencia.setInt(4, cita.getIdInmueble());
+                prepararSentencia.setString(1, pipa.getFecha());
+                prepararSentencia.setString(2, pipa.getHora());
+                prepararSentencia.setInt(3, pipa.getIdCliente());
+                prepararSentencia.setInt(4, pipa.getIdColonia());
                 int filasAfectadas = prepararSentencia.executeUpdate();
                 if(filasAfectadas > 0){
                     respuesta.put(Constantes.KEY_ERROR, false);
-                    respuesta.put(Constantes.KEY_MENSAJE, "Informacion de la cita guardada correctamente");
+                    respuesta.put(Constantes.KEY_MENSAJE, "Informacion de la pipa guardada correctamente");
                 }else{
                     respuesta.put(Constantes.KEY_MENSAJE, "Lo sentimos, huvo un error al guardar "
-                            + "la informacion de la cita por favor revisa la informacion");
+                            + "la informacion de la pipa por favor revisa la informacion");
                 }
                 conexionBD.close();
             } catch (SQLException ex) {
@@ -54,7 +54,7 @@ public class PipaDAO {
         return respuesta;
     }
     
-        public static HashMap<String, Object> obtenerCitas(){
+        public static HashMap<String, Object> obtenerPipas(){
         HashMap<String, Object> respuesta = new LinkedHashMap<>();
         respuesta.put(Constantes.KEY_ERROR, true);
         Connection conexionBD = ConexionBD.obtenerConexion();
@@ -67,19 +67,19 @@ public class PipaDAO {
                         + "INNER JOIN cliente c ON p.idCliente = c.idCliente;";
                 PreparedStatement prepararSentencia= conexionBD.prepareStatement(consulta);
                 ResultSet resultado = prepararSentencia.executeQuery();
-                List<Pipa> citas = new ArrayList();
+                List<Pipa> pipas = new ArrayList();
                 while(resultado.next()){
-                    Pipa cita = new Pipa();
-                    cita.setNombreInmueble(resultado.getString("nombreInmueble"));
-                    cita.setCalleInmueble(resultado.getString("calle"));
-                    cita.setNombreCliente(resultado.getString("nombre") +" "+ resultado.getString("apellidoPaterno") +" "+ resultado.getString("apellidoMaterno"));
-                    cita.setCorreoCliente(resultado.getString("correo"));
-                    cita.setFecha(resultado.getString("fecha"));
-                    cita.setHora(resultado.getString("hora"));
-                    citas.add(cita);
+                    Pipa pipa = new Pipa();
+                    pipa.setNombreColonia(resultado.getString("nombreInmueble"));
+                    pipa.setCalle(resultado.getString("calle"));
+                    pipa.setNombreCliente(resultado.getString("nombre") +" "+ resultado.getString("apellidoPaterno") +" "+ resultado.getString("apellidoMaterno"));
+                    pipa.setCorreoCliente(resultado.getString("correo"));
+                    pipa.setFecha(resultado.getString("fecha"));
+                    pipa.setHora(resultado.getString("hora"));
+                    pipas.add(pipa);
                 }
                 respuesta.put(Constantes.KEY_ERROR,false);
-                respuesta.put("citas", citas);
+                respuesta.put("pipas", pipas);
                 conexionBD.close();
             }catch (SQLException e){
                 respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());

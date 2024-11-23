@@ -6,10 +6,10 @@ package aguaxalapafx.controlador;
 
 import aguaxalapafx.modelo.daos.PipaDAO;
 import aguaxalapafx.modelo.daos.ClienteDAO;
-import aguaxalapafx.modelo.daos.InmuebleDAO;
+import aguaxalapafx.modelo.daos.ColoniaDAO;
 import aguaxalapafx.pojos.Pipa;
 import aguaxalapafx.pojos.Cliente;
-import aguaxalapafx.pojos.Inmueble;
+import aguaxalapafx.pojos.Colonia;
 import aguaxalapafx.utilidades.Constantes;
 import aguaxalapafx.utilidades.Utils;
 import java.net.URL;
@@ -43,7 +43,7 @@ import javafx.stage.Stage;
  */
 public class FXMLAgendarPipasController implements Initializable {
     private ObservableList<Cliente> clientes;
-    private ObservableList<Inmueble> inmuebles;
+    private ObservableList<Colonia> colonias;
     private ObservableList<String> horas;
     
     @FXML
@@ -63,9 +63,9 @@ public class FXMLAgendarPipasController implements Initializable {
     @FXML
     private TextField tfBuscarCliente;
     @FXML
-    private TableView<Inmueble> tvInmuebles;
+    private TableView<Colonia> tvColonias;
     @FXML
-    private TableColumn colNombreInmueble;
+    private TableColumn colNombreColonia;
     @FXML
     private TableColumn colPrecioVenta;
     @FXML
@@ -77,7 +77,7 @@ public class FXMLAgendarPipasController implements Initializable {
     @FXML
     private TableColumn colMetros;
     @FXML
-    private TextField tfBuscarInmueble;
+    private TextField tfBuscarColonia;
     @FXML
     private Label lbTitulo;
 
@@ -91,11 +91,11 @@ public class FXMLAgendarPipasController implements Initializable {
         configurarTablaClientes();
         cargarDatosClientes();
         
-        configurarTablaInmuebles();
-        cargarDatosInmuebles();
+        configurarTablaColonias();
+        cargarDatosColonias();
         
         configurarBusquedaCliente();
-        configurarBusquedaInmueble();
+        configurarBusquedaColonia();
         
     }    
     
@@ -128,8 +128,8 @@ public class FXMLAgendarPipasController implements Initializable {
         }
     }
     
-    private void configurarTablaInmuebles(){
-        colNombreInmueble.setCellValueFactory(new PropertyValueFactory("nombreInmueble"));
+    private void configurarTablaColonias(){
+        colNombreColonia.setCellValueFactory(new PropertyValueFactory("nombreInmueble"));
         colPrecioVenta.setCellValueFactory(new PropertyValueFactory("precioVenta"));
         colCalle.setCellValueFactory(new PropertyValueFactory("calle"));
         colColonia.setCellValueFactory(new PropertyValueFactory("colonia"));
@@ -137,14 +137,14 @@ public class FXMLAgendarPipasController implements Initializable {
         colMetros.setCellValueFactory(new PropertyValueFactory("tamanioM2"));
     }
     
-    private void cargarDatosInmuebles(){
-        inmuebles = FXCollections.observableArrayList();
-        HashMap<String, Object> respuesta = InmuebleDAO.obtenerInmuebles();
+    private void cargarDatosColonias(){
+        colonias = FXCollections.observableArrayList();
+        HashMap<String, Object> respuesta = ColoniaDAO.obtenerColonias();
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
-           ArrayList<Inmueble> inmueblesBD =(ArrayList<Inmueble>) respuesta.get("inmuebles");
-           inmuebles.addAll(inmueblesBD);
-           tvInmuebles.setItems(inmuebles);
+           ArrayList<Colonia> coloniasBD =(ArrayList<Colonia>) respuesta.get("colonias");
+           colonias.addAll(coloniasBD);
+           tvColonias.setItems(colonias);
         }else{
             Utils.mostrarAlertaSimple("Error", ""+ respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.WARNING);
         }
@@ -188,11 +188,11 @@ public class FXMLAgendarPipasController implements Initializable {
         }
     }
         
-    public void configurarBusquedaInmueble(){
-        if(inmuebles.size()>0){
+    public void configurarBusquedaColonia(){
+        if(colonias.size()>0){
             //La p significa el predicado que va aplicar si es true
-            FilteredList<Inmueble> filtroPaciente = new FilteredList<>(inmuebles, p -> true);
-            tfBuscarInmueble.textProperty().addListener(new ChangeListener<String>(){
+            FilteredList<Colonia> filtroPaciente = new FilteredList<>(colonias, p -> true);
+            tfBuscarColonia.textProperty().addListener(new ChangeListener<String>(){
                 @Override
                 public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                     filtroPaciente.setPredicate(p -> {
@@ -202,7 +202,7 @@ public class FXMLAgendarPipasController implements Initializable {
                         }
                         //evaluacion de predicado para nombre
                         String palabraFiltro = newValue.toLowerCase();
-                        if(p.getNombreInmueble().toLowerCase().contains(palabraFiltro)){
+                        if(p.getNombreColonia().toLowerCase().contains(palabraFiltro)){
                             return true;
                         }
                         //Evaluacion de precicado para apellido paterno
@@ -219,9 +219,9 @@ public class FXMLAgendarPipasController implements Initializable {
                 }
                 
             });
-            SortedList<Inmueble> listaOrdenada = new SortedList<>(filtroPaciente);
-            listaOrdenada.comparatorProperty().bind(tvInmuebles.comparatorProperty());
-            tvInmuebles.setItems(listaOrdenada);
+            SortedList<Colonia> listaOrdenada = new SortedList<>(filtroPaciente);
+            listaOrdenada.comparatorProperty().bind(tvColonias.comparatorProperty());
+            tvColonias.setItems(listaOrdenada);
         }
     }
       
@@ -233,27 +233,27 @@ public class FXMLAgendarPipasController implements Initializable {
     private void btnClicAgendar(ActionEvent event) {
         
         Cliente clienteSeleccionado = tvClientes.getSelectionModel().getSelectedItem();
-        Inmueble inmuebleSeleccionado = tvInmuebles.getSelectionModel().getSelectedItem();
+        Colonia coloniaSeleccionada = tvColonias.getSelectionModel().getSelectedItem();
         System.out.println(clienteSeleccionado);
-        System.out.println(inmuebleSeleccionado);
+        System.out.println(coloniaSeleccionada);
         
-        if(clienteSeleccionado !=null && inmuebleSeleccionado !=null){
-        Pipa cita = new Pipa();
+        if(clienteSeleccionado !=null && coloniaSeleccionada !=null){
+        Pipa pipa = new Pipa();
         
-            cita.setFecha(dpSeleccionarFecha.getValue().toString());
-            cita.setHora(cbSeleccionarHora.getSelectionModel().getSelectedItem());
-            cita.setIdCliente(clienteSeleccionado.getIdCliente());
-            cita.setIdInmueble(inmuebleSeleccionado.getIdImueble());
+            pipa.setFecha(dpSeleccionarFecha.getValue().toString());
+            pipa.setHora(cbSeleccionarHora.getSelectionModel().getSelectedItem());
+            pipa.setIdCliente(clienteSeleccionado.getIdCliente());
+            pipa.setIdColonia(coloniaSeleccionada.getIdImueble());
             
-        HashMap<String, Object> respuesta = PipaDAO.guardarCita(cita);
+        HashMap<String, Object> respuesta = PipaDAO.guardarPipa(pipa);
         if(!(boolean)respuesta.get(Constantes.KEY_ERROR)){
-            Utils.mostrarAlertaSimple("Cita guardada", (String) respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.INFORMATION);
+            Utils.mostrarAlertaSimple("Pipa guardada", (String) respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.INFORMATION);
             cerrarVentana();
         }else{
             Utils.mostrarAlertaSimple("Error al guardar paciente", (String) respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
         }
     }else{
-            Utils.mostrarAlertaSimple("Datos Incompletos", "Para guardar una cita Seleccione un cliente y un inmueble"
+            Utils.mostrarAlertaSimple("Datos Incompletos", "Para guardar una pipa Seleccione un cliente y una colonia"
                     , Alert.AlertType.WARNING);
         }
     }

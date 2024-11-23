@@ -4,7 +4,7 @@
  */
 package aguaxalapafx.controlador;
 
-import aguaxalapafx.pojos.Secretaria;
+import aguaxalapafx.pojos.Administrador;
 import aguaxalapafx.utilidades.Utils;
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +28,7 @@ import javafx.stage.Stage;
  * @author Cuauhtemoc Calderon
  */
 public class FXMLMenuPrincipalController implements Initializable {
-    private Secretaria secretaria;
+    private Administrador secretaria;
     @FXML
     private Label lbBienvenido;
 
@@ -41,16 +41,16 @@ public class FXMLMenuPrincipalController implements Initializable {
     }    
     
     
-    public void inicializarValores(Secretaria secretaria){
+    public void inicializarValores(Administrador secretaria){
         this.secretaria = secretaria;
                 lbBienvenido.setText("Bienvenido: "+this.secretaria.getNombre()+" "+this.secretaria.getApellidoPaterno()+" "+this.secretaria.getApellidoMaterno());
     }
 
     @FXML
-    private void btnClicAgendarCita(ActionEvent event) {
+    private void btnClicAgendarPipa(ActionEvent event) {
         try {
             Stage escenario = new Stage();
-            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLAgendarCitas.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLAgendarPipas.fxml");
             Parent root = loader.load();
             FXMLAgendarPipasController controlador = loader.getController();
             Scene escena = new Scene(root);
@@ -64,10 +64,10 @@ public class FXMLMenuPrincipalController implements Initializable {
     }
 
     @FXML
-    private void btnClicVerCitas(ActionEvent event) {
+    private void btnClicVerPipas(ActionEvent event) {
         try {
             Stage escenario = new Stage();
-            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLCitas.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLPipas.fxml");
             Parent root = loader.load();
             FXMLPipasController controlador = loader.getController();
             Scene escena = new Scene(root);
@@ -81,12 +81,12 @@ public class FXMLMenuPrincipalController implements Initializable {
     }
 
     @FXML
-    private void btnClicVerInmuebles(ActionEvent event) {
+    private void btnClicVerColonias(ActionEvent event) {
         try {
             Stage escenario = new Stage();
-            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLInmuebles.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLColonias.fxml");
             Parent root = loader.load();
-            FXMLInmueblesController controlador = loader.getController();
+            FXMLColoniasController controlador = loader.getController();
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Pacientes");
@@ -98,10 +98,10 @@ public class FXMLMenuPrincipalController implements Initializable {
     }
 
     @FXML
-    private void imgClicAgendarCitas(MouseEvent event) {
+    private void imgClicAgendarPipas(MouseEvent event) {
         try {
             Stage escenario = new Stage();
-            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLAgendarCitas.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLAgendarPipas.fxml");
             Parent root = loader.load();
             FXMLAgendarPipasController controlador = loader.getController();
             Scene escena = new Scene(root);
@@ -116,10 +116,10 @@ public class FXMLMenuPrincipalController implements Initializable {
     }
 
     @FXML
-    private void imgClicVerCitas(MouseEvent event) {
+    private void imgClicVerPipas(MouseEvent event) {
         try {
             Stage escenario = new Stage();
-            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLCitas.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLPipas.fxml");
             Parent root = loader.load();
             FXMLPipasController controlador = loader.getController();
             Scene escena = new Scene(root);
@@ -133,12 +133,12 @@ public class FXMLMenuPrincipalController implements Initializable {
     }
 
     @FXML
-    private void imgClicVerInmuebles(MouseEvent event) {
+    private void imgClicVerColonias(MouseEvent event) {
         try {
             Stage escenario = new Stage();
-            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLInmuebles.fxml");
+            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLColonias.fxml");
             Parent root = loader.load();
-            FXMLInmueblesController controlador = loader.getController();
+            FXMLColoniasController controlador = loader.getController();
             Scene escena = new Scene(root);
             escenario.setScene(escena);
             escenario.setTitle("Pacientes");

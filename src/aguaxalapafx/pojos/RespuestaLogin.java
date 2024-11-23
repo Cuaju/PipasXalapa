@@ -12,12 +12,12 @@ public class RespuestaLogin {
         
     private Boolean error;
     private String menasje;
-    private Secretaria secretaria;
+    private Administrador secretaria;
 
     public RespuestaLogin() {
     }
 
-    public RespuestaLogin(Boolean error, String menasje, Secretaria secretaria) {
+    public RespuestaLogin(Boolean error, String menasje, Administrador secretaria) {
         this.error = error;
         this.menasje = menasje;
         this.secretaria = secretaria;
@@ -31,7 +31,7 @@ public class RespuestaLogin {
         this.menasje = menasje;
     }
 
-    public void setSecretaria(Secretaria secretaria) {
+    public void setSecretaria(Administrador secretaria) {
         this.secretaria = secretaria;
     }
 
@@ -43,7 +43,7 @@ public class RespuestaLogin {
         return menasje;
     }
 
-    public Secretaria getSecretaria() {
+    public Administrador getSecretaria() {
         return secretaria;
     }
     

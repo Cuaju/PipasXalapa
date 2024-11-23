@@ -6,7 +6,7 @@ package aguaxalapafx.modelo.daos;
 
 import aguaxalapafx.modelo.ConexionBD;
 import aguaxalapafx.pojos.RespuestaLogin;
-import aguaxalapafx.pojos.Secretaria;
+import aguaxalapafx.pojos.Administrador;
 import aguaxalapafx.utilidades.Constantes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,7 +36,7 @@ public class AutenticacionDAO {
                    respuesta.setError(false);
                    respuesta.setMenasje("Usuariio Identificado correctamente");
                    
-                   Secretaria secretaria = new Secretaria();
+                   Administrador secretaria = new Administrador();
                    secretaria.setIdSecretaria(resultadoSentencia.getInt("idSecretaria"));
                    secretaria.setNombre(resultadoSentencia.getString("nombre"));
                    secretaria.setApellidoPaterno(resultadoSentencia.getString("apellidoPaterno"));

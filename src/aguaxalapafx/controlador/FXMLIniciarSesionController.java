@@ -6,7 +6,7 @@ package aguaxalapafx.controlador;
 
 import aguaxalapafx.modelo.daos.AutenticacionDAO;
 import aguaxalapafx.pojos.RespuestaLogin;
-import aguaxalapafx.pojos.Secretaria;
+import aguaxalapafx.pojos.Administrador;
 import aguaxalapafx.utilidades.Utils;
 import java.io.IOException;
 import java.net.URL;
@@ -56,7 +56,7 @@ public class FXMLIniciarSesionController implements Initializable {
                 
                 
     // 1.0.0
-    private void irPantallaPrincipal(Secretaria secretaria){
+    private void irPantallaPrincipal(Administrador secretaria){
         try {
             Stage escenarioPrincipal = (Stage) tfUsuario.getScene().getWindow();
             FXMLLoader loader = Utils.obtenerLoader("vista/FXMLMenuPrincipal.fxml");

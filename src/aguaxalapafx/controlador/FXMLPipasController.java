@@ -43,11 +43,11 @@ import javafx.stage.Stage;
  */
 public class FXMLPipasController implements Initializable {
 
-    private ObservableList<Pipa> citas;
+    private ObservableList<Pipa> pipas;
     @FXML
-    private TableView<Pipa> tvCitas;
+    private TableView<Pipa> tvPipas;
     @FXML
-    private TableColumn colNombreInmueble;
+    private TableColumn colNombreColonia;
     @FXML
     private TableColumn colCalle;
     @FXML
@@ -55,11 +55,11 @@ public class FXMLPipasController implements Initializable {
     @FXML
     private TableColumn colCorreo;
     @FXML
-    private TableColumn colFechaCita;
+    private TableColumn colFecha;
     @FXML
     private TableColumn colHora;
     @FXML
-    private TextField tfBuscarCita;
+    private TextField tfBuscarPipa;
     @FXML
     private Label lbTitulo;
 
@@ -73,22 +73,22 @@ public class FXMLPipasController implements Initializable {
     }   
     
         private void configurarTabla(){
-        colNombreInmueble.setCellValueFactory(new PropertyValueFactory("nombreInmueble"));
+        colNombreColonia.setCellValueFactory(new PropertyValueFactory("nombreInmueble"));
         colCalle.setCellValueFactory(new PropertyValueFactory("calleInmueble"));
         colNombreCliente.setCellValueFactory(new PropertyValueFactory("nombreCliente"));
         colCorreo.setCellValueFactory(new PropertyValueFactory("correoCliente"));
-        colFechaCita.setCellValueFactory(new PropertyValueFactory("fecha"));
+        colFecha.setCellValueFactory(new PropertyValueFactory("fecha"));
         colHora.setCellValueFactory(new PropertyValueFactory("hora"));
     }
     
     private void cargarDatosPacientes(){
-        citas = FXCollections.observableArrayList();
-        HashMap<String, Object> respuesta = PipaDAO.obtenerCitas();
+        pipas = FXCollections.observableArrayList();
+        HashMap<String, Object> respuesta = PipaDAO.obtenerPipas();
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
-            ArrayList<Pipa> citasBD = (ArrayList<Pipa>) respuesta.get("citas");
-            citas.addAll(citasBD);
-            tvCitas.setItems(citas);
+            ArrayList<Pipa> pipasBD = (ArrayList<Pipa>) respuesta.get("pipas");
+            pipas.addAll(pipasBD);
+            tvPipas.setItems(pipas);
         }else{
             Utils.mostrarAlertaSimple("Error","" + respuesta.get(Constantes.KEY_MENSAJE), Alert.AlertType.ERROR);
         }
@@ -96,9 +96,9 @@ public class FXMLPipasController implements Initializable {
     }
 
     private void configurarBusquedaPaciente(){
-        if(citas.size()>0){
-            FilteredList<Pipa> filtroPaciente = new FilteredList<>(citas,p -> true);
-            tfBuscarCita.textProperty().addListener(new ChangeListener<String>() {
+        if(pipas.size()>0){
+            FilteredList<Pipa> filtroPaciente = new FilteredList<>(pipas,p -> true);
+            tfBuscarPipa.textProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                     filtroPaciente.setPredicate(p -> {
@@ -107,10 +107,10 @@ public class FXMLPipasController implements Initializable {
                         return true;
                     }
                     String palabraFiltro = newValue.toLowerCase();
-                    if (p.getCalleInmueble().toLowerCase().contains(palabraFiltro)){
+                    if (p.getCalle().toLowerCase().contains(palabraFiltro)){
                         return true;
                     }
-                    if (p.getNombreInmueble().toLowerCase().contains(palabraFiltro)){
+                    if (p.getNombreColonia().toLowerCase().contains(palabraFiltro)){
                         return true;
                     }
                     if (p.getNombreCliente().toLowerCase().contains(palabraFiltro)){
@@ -127,16 +127,16 @@ public class FXMLPipasController implements Initializable {
                 }
             });
             SortedList<Pipa> listaOrdenada = new SortedList<>(filtroPaciente);
-            listaOrdenada.comparatorProperty().bind(tvCitas.comparatorProperty());
-            tvCitas.setItems(listaOrdenada);
+            listaOrdenada.comparatorProperty().bind(tvPipas.comparatorProperty());
+            tvPipas.setItems(listaOrdenada);
         }
     }    
     
     @FXML
-    private void btnClicAgendarCita(ActionEvent event) {
+    private void btnClicAgendarPipa(ActionEvent event) {
         try{
-            Stage escenarioPrincipal = (Stage) tfBuscarCita.getScene().getWindow();
-            Parent root = FXMLLoader.load(aguaxalapafx.Aguaxalapafx.class.getResource("vista/FXMLAgendarCitas.fxml"));
+            Stage escenarioPrincipal = (Stage) tfBuscarPipa.getScene().getWindow();
+            Parent root = FXMLLoader.load(aguaxalapafx.Aguaxalapafx.class.getResource("vista/FXMLAgendarPipas.fxml"));
             Scene escenaPrincipal = new Scene(root);
             escenarioPrincipal.setTitle("Home");
             escenarioPrincipal.setScene(escenaPrincipal);

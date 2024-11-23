@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="827.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inmobiliariajfx.controlador.FXMLMenuPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="827.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aguaxalapafx.controlador.FXMLMenuPrincipalController">
    <children>
       <Pane prefHeight="200.0" prefWidth="1243.0" style="-fx-background-color: lightblue;">
          <children>
@@ -43,32 +43,32 @@
             </ImageView>
          </children>
       </Pane>
-      <Button alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClicAgendarCita" prefHeight="443.0" prefWidth="263.0" style="-fx-background-color: lightblue;" text="ADMINISTRAR COLONIAS" textFill="#48ae98">
+      <Button alignment="BOTTOM_CENTER" layoutX="207.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClicAgendarPipa" prefHeight="443.0" prefWidth="263.0" style="-fx-background-color: lightblue;" text="ADMINISTRAR COLONIAS" textFill="#48ae98">
          <font>
             <Font name="Gloucester MT Extra Condensed" size="28.0" />
          </font>
       </Button>
-      <Button alignment="BOTTOM_CENTER" layoutX="490.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClicVerCitas" prefHeight="443.0" prefWidth="263.0" style="-fx-background-color: lightblue;" text="CONSULTAR PIPAS" textFill="#48ae98">
+      <Button alignment="BOTTOM_CENTER" layoutX="490.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClicVerPipas" prefHeight="443.0" prefWidth="263.0" style="-fx-background-color: lightblue;" text="CONSULTAR PIPAS" textFill="#48ae98">
          <font>
             <Font name="Gloucester MT Extra Condensed" size="31.0" />
          </font>
       </Button>
-      <Button alignment="BOTTOM_CENTER" layoutX="773.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClicVerInmuebles" prefHeight="443.0" prefWidth="263.0" style="-fx-background-color: lightblue;" text="CONSULTAR COLONIAS" textFill="#48ae98">
+      <Button alignment="BOTTOM_CENTER" layoutX="773.0" layoutY="359.0" mnemonicParsing="false" onAction="#btnClicVerColonias" prefHeight="443.0" prefWidth="263.0" style="-fx-background-color: lightblue;" text="CONSULTAR COLONIAS" textFill="#48ae98">
          <font>
             <Font name="Gloucester MT Extra Condensed" size="30.0" />
          </font>
       </Button>
-      <ImageView fitHeight="187.0" fitWidth="251.0" layoutX="213.0" layoutY="471.0" onMouseClicked="#imgClicAgendarCitas" pickOnBounds="true">
+      <ImageView fitHeight="187.0" fitWidth="251.0" layoutX="213.0" layoutY="471.0" onMouseClicked="#imgClicAgendarPipas" pickOnBounds="true">
          <image>
             <Image url="@../recursos/AdministrarColonias.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="187.0" fitWidth="251.0" layoutX="496.0" layoutY="471.0" onMouseClicked="#imgClicVerCitas" pickOnBounds="true">
+      <ImageView fitHeight="187.0" fitWidth="251.0" layoutX="496.0" layoutY="471.0" onMouseClicked="#imgClicVerPipas" pickOnBounds="true">
          <image>
             <Image url="@../recursos/ConsultarPipas.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="187.0" fitWidth="251.0" layoutX="781.0" layoutY="471.0" onMouseClicked="#imgClicVerInmuebles" pickOnBounds="true">
+      <ImageView fitHeight="187.0" fitWidth="251.0" layoutX="781.0" layoutY="471.0" onMouseClicked="#imgClicVerColonias" pickOnBounds="true">
          <image>
             <Image url="@../recursos/verColonias.jpeg" />
          </image>

@@ -1,6 +1,5 @@
 package aguaxalapafx.modelo.daos;
 
-import aguaxalapafx.modelo.daos.AutenticacionDAO;
 import aguaxalapafx.pojos.RespuestaLogin;
 import org.junit.Test;
 import static org.junit.Assert.*;

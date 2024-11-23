@@ -9,37 +9,37 @@ package aguaxalapafx.pojos;
  * @author Cuauhtemoc Calderon
  */
 public class Pipa {
-    private int idCita;
+    private int idPipa;
     private String fecha;
     private String hora;
     private int idCliente;
-    private int idInmueble;
+    private int idColonia;
     private String nombreCliente;
     private String correoCliente;
-    private String nombreInmueble;
-    private String calleInmueble;
+    private String nombreColonia;
+    private String calle;
 
-    public Pipa(int idCita, String fecha, String hora, int idCliente, int idInmueble, String nombreCliente, String correoCliente, String nombreInmueble, String calleInmueble) {
-        this.idCita = idCita;
+    public Pipa(int idPipa, String fecha, String hora, int idCliente, int idColonia, String nombreCliente, String correoCliente, String nombreColonia, String calle) {
+        this.idPipa = idPipa;
         this.fecha = fecha;
         this.hora = hora;
         this.idCliente = idCliente;
-        this.idInmueble = idInmueble;
+        this.idColonia = idColonia;
         this.nombreCliente = nombreCliente;
         this.correoCliente = correoCliente;
-        this.nombreInmueble = nombreInmueble;
-        this.calleInmueble = calleInmueble;
+        this.nombreColonia = nombreColonia;
+        this.calle = calle;
     }
 
     public Pipa() {
     }
 
-    public int getIdCita() {
-        return idCita;
+    public int getIdPipa() {
+        return idPipa;
     }
 
-    public void setIdCita(int idCita) {
-        this.idCita = idCita;
+    public void setIdPipa(int idPipa) {
+        this.idPipa = idPipa;
     }
 
     public String getFecha() {
@@ -66,12 +66,12 @@ public class Pipa {
         this.idCliente = idCliente;
     }
 
-    public int getIdInmueble() {
-        return idInmueble;
+    public int getIdColonia() {
+        return idColonia;
     }
 
-    public void setIdInmueble(int idInmueble) {
-        this.idInmueble = idInmueble;
+    public void setIdColonia(int idColonia) {
+        this.idColonia = idColonia;
     }
 
     public String getNombreCliente() {
@@ -90,22 +90,19 @@ public class Pipa {
         this.correoCliente = correoCliente;
     }
 
-    public String getNombreInmueble() {
-        return nombreInmueble;
+    public String getNombreColonia() {
+        return nombreColonia;
     }
 
-    public void setNombreInmueble(String nombreInmueble) {
-        this.nombreInmueble = nombreInmueble;
+    public void setNombreColonia(String nombreColonia) {
+        this.nombreColonia = nombreColonia;
     }
 
-    public String getCalleInmueble() {
-        return calleInmueble;
+    public String getCalle() {
+        return calle;
     }
 
-    public void setCalleInmueble(String calleInmueble) {
-        this.calleInmueble = calleInmueble;
-    }
-    
-   
-    
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }   
 }
