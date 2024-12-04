@@ -14,7 +14,7 @@ public class Constantes {
     public static final String HOSTNAME = "localhost";
     public static final String PUERTO = "3306";
     public static final String USUARIO = "root";//hacer un usuario y pooner aqui el nombre
-    public static final String PASSWORD = "Usuario0001";//poner contraseña
+    public static final String PASSWORD = "Tasco_123";//poner contraseña
     
     public static final String MSJ_ERROR_CONEXION = "Por el momento el servicio no esta disponible, intentalo mas tarde.";
     public static final String KEY_ERROR = "error";

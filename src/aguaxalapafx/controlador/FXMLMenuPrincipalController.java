@@ -48,19 +48,7 @@ public class FXMLMenuPrincipalController implements Initializable {
 
     @FXML
     private void btnClicAgendarPipa(ActionEvent event) {
-        try {
-            Stage escenario = new Stage();
-            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLAgendarPipas.fxml");
-            Parent root = loader.load();
-            FXMLAgendarPipasController controlador = loader.getController();
-            Scene escena = new Scene(root);
-            escenario.setScene(escena);
-            escenario.setTitle("Pacientes");
-            escenario.initModality(Modality.APPLICATION_MODAL);
-            escenario.showAndWait();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        System.out.println("Agendar Piapas");
     }
 
     @FXML
@@ -99,20 +87,7 @@ public class FXMLMenuPrincipalController implements Initializable {
 
     @FXML
     private void imgClicAgendarPipas(MouseEvent event) {
-        try {
-            Stage escenario = new Stage();
-            FXMLLoader loader = Utils.obtenerLoader("vista/FXMLAgendarPipas.fxml");
-            Parent root = loader.load();
-            FXMLAgendarPipasController controlador = loader.getController();
-            Scene escena = new Scene(root);
-            escenario.setScene(escena);
-            escenario.setTitle("Pacientes");
-            escenario.initModality(Modality.APPLICATION_MODAL);
-            escenario.showAndWait();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        
+            System.out.println("AgendarPipas");
     }
 
     @FXML

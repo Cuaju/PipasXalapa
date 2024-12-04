@@ -6,6 +6,7 @@ package aguaxalapafx.modelo.daos;
 
 import aguaxalapafx.modelo.ConexionBD;
 import aguaxalapafx.pojos.Pipa;
+import aguaxalapafx.pojos.Pipas;
 import aguaxalapafx.utilidades.Constantes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -88,5 +89,34 @@ public class PipaDAO {
             respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
         }
         return respuesta;
-    } 
+    }
+        
+        public static HashMap<String, Object> obtenerPipasDisponibles(){
+            HashMap<String, Object> respuesta = new LinkedHashMap<>();
+            respuesta.put(Constantes.KEY_ERROR, true);
+            Connection conexionBD = ConexionBD.obtenerConexion();
+            if(conexionBD != null){
+                try{
+                    String consulta= "SELECT capacidad, precio, proveedor FROM Pipa;";
+                    PreparedStatement prepararSentencia= conexionBD.prepareStatement(consulta);
+                    ResultSet resultado = prepararSentencia.executeQuery();
+                    List<Pipas> pipasDisponibles = new ArrayList();
+                    while(resultado.next()){
+                        Pipas pipa = new Pipas();
+                        pipa.setCapacidad(resultado.getInt("capacidad"));
+                        pipa.setPrecio(resultado.getDouble("precio"));
+                        pipa.setProvedor(resultado.getString("proveedor"));
+                        pipasDisponibles.add(pipa);
+                    }
+                    respuesta.put(Constantes.KEY_ERROR,false);
+                    respuesta.put("pipas", pipasDisponibles);
+                    conexionBD.close();
+                }catch (SQLException e){
+                    respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+                }
+            }else{
+                respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+            }
+            return respuesta;
+        }
 }

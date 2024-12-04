@@ -6,6 +6,7 @@ package aguaxalapafx.controlador;
 
 import aguaxalapafx.modelo.daos.PipaDAO;
 import aguaxalapafx.pojos.Pipa;
+import aguaxalapafx.pojos.Pipas;
 import aguaxalapafx.utilidades.Constantes;
 import aguaxalapafx.utilidades.Utils;
 import java.io.IOException;
@@ -43,25 +44,20 @@ import javafx.stage.Stage;
  */
 public class FXMLPipasController implements Initializable {
 
-    private ObservableList<Pipa> pipas;
+    private ObservableList<Pipas> pipas;
     @FXML
-    private TableView<Pipa> tvPipas;
-    @FXML
-    private TableColumn colNombreColonia;
-    @FXML
-    private TableColumn colCalle;
-    @FXML
-    private TableColumn colNombreCliente;
-    @FXML
-    private TableColumn colCorreo;
-    @FXML
-    private TableColumn colFecha;
-    @FXML
-    private TableColumn colHora;
+    private TableView<Pipas> tvPipas;
+
     @FXML
     private TextField tfBuscarPipa;
     @FXML
     private Label lbTitulo;
+    @FXML
+    private TableColumn colCapacidad;
+    @FXML
+    private TableColumn colPrecio;
+    @FXML
+    private TableColumn colProvedor;
 
     /**
      * Initializes the controller class.
@@ -73,20 +69,17 @@ public class FXMLPipasController implements Initializable {
     }   
     
         private void configurarTabla(){
-        colNombreColonia.setCellValueFactory(new PropertyValueFactory("nombreInmueble"));
-        colCalle.setCellValueFactory(new PropertyValueFactory("calleInmueble"));
-        colNombreCliente.setCellValueFactory(new PropertyValueFactory("nombreCliente"));
-        colCorreo.setCellValueFactory(new PropertyValueFactory("correoCliente"));
-        colFecha.setCellValueFactory(new PropertyValueFactory("fecha"));
-        colHora.setCellValueFactory(new PropertyValueFactory("hora"));
+        colCapacidad.setCellValueFactory(new PropertyValueFactory("capacidad"));
+        colPrecio.setCellValueFactory(new PropertyValueFactory("precio"));
+        colProvedor.setCellValueFactory(new PropertyValueFactory("provedor"));
     }
     
     private void cargarDatosPacientes(){
         pipas = FXCollections.observableArrayList();
-        HashMap<String, Object> respuesta = PipaDAO.obtenerPipas();
+        HashMap<String, Object> respuesta = PipaDAO.obtenerPipasDisponibles();
         boolean isError = (boolean) respuesta.get(Constantes.KEY_ERROR);
         if(!isError){
-            ArrayList<Pipa> pipasBD = (ArrayList<Pipa>) respuesta.get("pipas");
+            ArrayList<Pipas> pipasBD = (ArrayList<Pipas>) respuesta.get("pipas");
             pipas.addAll(pipasBD);
             tvPipas.setItems(pipas);
         }else{
@@ -97,7 +90,7 @@ public class FXMLPipasController implements Initializable {
 
     private void configurarBusquedaPaciente(){
         if(pipas.size()>0){
-            FilteredList<Pipa> filtroPaciente = new FilteredList<>(pipas,p -> true);
+            FilteredList<Pipas> filtroPaciente = new FilteredList<>(pipas,p -> true);
             tfBuscarPipa.textProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -107,26 +100,14 @@ public class FXMLPipasController implements Initializable {
                         return true;
                     }
                     String palabraFiltro = newValue.toLowerCase();
-                    if (p.getCalle().toLowerCase().contains(palabraFiltro)){
-                        return true;
-                    }
-                    if (p.getNombreColonia().toLowerCase().contains(palabraFiltro)){
-                        return true;
-                    }
-                    if (p.getNombreCliente().toLowerCase().contains(palabraFiltro)){
-                        return true;
-                    }
-                    if (p.getCorreoCliente().toLowerCase().contains(palabraFiltro)){
-                        return true;
-                    }
-                    if (p.getFecha().toLowerCase().contains(palabraFiltro)){
+                    if (p.getProvedor().toLowerCase().contains(palabraFiltro)){
                         return true;
                     }
                     return false;
                     });
                 }
             });
-            SortedList<Pipa> listaOrdenada = new SortedList<>(filtroPaciente);
+            SortedList<Pipas> listaOrdenada = new SortedList<>(filtroPaciente);
             listaOrdenada.comparatorProperty().bind(tvPipas.comparatorProperty());
             tvPipas.setItems(listaOrdenada);
         }

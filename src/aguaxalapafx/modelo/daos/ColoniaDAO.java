@@ -6,6 +6,7 @@ package aguaxalapafx.modelo.daos;
 
 import aguaxalapafx.modelo.ConexionBD;
 import aguaxalapafx.pojos.Colonia;
+import aguaxalapafx.pojos.Colonias;
 import aguaxalapafx.utilidades.Constantes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -105,6 +106,35 @@ public class ColoniaDAO {
                 }
                 respuesta.put(Constantes.KEY_ERROR, false);
                 respuesta.put("colonias", colonias);
+                conexionBD.close();
+            }catch(SQLException e){
+                respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());
+            }
+        }else{
+            respuesta.put(Constantes.KEY_MENSAJE, Constantes.MSJ_ERROR_CONEXION);
+        }
+        return respuesta;
+    }
+    
+    public static HashMap<String, Object> obtenerServicioColonias(){
+                HashMap<String, Object> respuesta = new LinkedHashMap<>();
+        respuesta.put(Constantes.KEY_ERROR, true);
+        Connection conexionBD = ConexionBD.obtenerConexion();
+        if(conexionBD != null){
+            try{
+                String consulta = "SELECT nombre, fechaInicioAgua, fechaFinAgua FROM Colonia;";
+                PreparedStatement prepararSentencia = conexionBD.prepareStatement(consulta);
+                ResultSet resultado = prepararSentencia.executeQuery();
+                List<Colonias> coloniasServicio = new ArrayList();
+                while(resultado.next()){
+                    Colonias colonias = new Colonias();
+                    colonias.setNombre(resultado.getString("nombre"));
+                    colonias.setFechaInicioAgua(resultado.getString("fechaInicioAgua"));
+                    colonias.setFechaFinAgua(resultado.getString("fechaFinAgua"));
+                    coloniasServicio.add(colonias);
+                }
+                respuesta.put(Constantes.KEY_ERROR, false);
+                respuesta.put("colonias", coloniasServicio);
                 conexionBD.close();
             }catch(SQLException e){
                 respuesta.put(Constantes.KEY_MENSAJE, e.getMessage());

@@ -26,19 +26,11 @@
       </Pane>
       <TextField fx:id="tfBusquedaColonia" layoutX="40.0" layoutY="133.0" prefHeight="31.0" prefWidth="237.0" promptText="Buscar colonia" />
       <Button layoutX="311.0" layoutY="133.0" mnemonicParsing="false" onAction="#btnClicImprimirLista" text="Imprimir lista" />
-      <TableView fx:id="tvColonias" layoutX="40.0" layoutY="183.0" prefHeight="200.0" prefWidth="1078.0">
+      <TableView fx:id="tvColonias" layoutX="40.0" layoutY="182.0" prefHeight="200.0" prefWidth="1078.0">
          <columns>
-            <TableColumn fx:id="colNombre" prefWidth="75.0" text="nombre" />
-            <TableColumn fx:id="colPrecioCompra" prefWidth="132.0" text="precioCompra" />
-            <TableColumn fx:id="colPrecioVenta" prefWidth="120.0" text="precioVenta" />
-            <TableColumn fx:id="colCalle" prefWidth="53.0" text="calle" />
-            <TableColumn fx:id="colColonia" prefWidth="67.0" text="colonia" />
-            <TableColumn fx:id="colCodigoPostal" prefWidth="116.0" text="codigoPostal" />
-            <TableColumn fx:id="colNoExterior" prefWidth="106.0" text="noExterior" />
-            <TableColumn fx:id="colNoInterior" prefWidth="109.0" text="noInterior" />
-            <TableColumn fx:id="colTamanio" prefWidth="97.0" text="tamanioM2" />
-            <TableColumn fx:id="colPropietario" prefWidth="94.0" text="propietario" />
-            <TableColumn fx:id="colVendedor" prefWidth="108.0" text="vendedor" />
+            <TableColumn fx:id="colColonia" prefWidth="468.0" text="colonia" />
+            <TableColumn fx:id="colfechaInicioAgua" prefWidth="286.0" text="Inicio Servicio de Agua" />
+            <TableColumn fx:id="colfechaFinAgua" prefWidth="323.0" text="Fin Servicio de Agua" />
          </columns>
       </TableView>
    </children>

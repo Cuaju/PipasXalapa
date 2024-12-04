@@ -12,7 +12,7 @@
    <children>
       <Pane prefHeight="200.0" prefWidth="1460.0" style="-fx-background-color: lightblue;">
          <children>
-            <Label fx:id="lbTitulo" layoutX="39.0" layoutY="48.0" text="Servicio de Colonias" textFill="WHITE">
+            <Label fx:id="lbTitulo" layoutX="39.0" layoutY="48.0" text="Consultar Pipas Disponibles" textFill="WHITE">
                <font>
                   <Font name="Gloucester MT Extra Condensed" size="87.0" />
                </font>
@@ -26,13 +26,9 @@
       </Pane>
       <TableView fx:id="tvPipas" layoutX="53.0" layoutY="367.0" prefHeight="422.0" prefWidth="1342.0">
          <columns>
-            <TableColumn fx:id="colNombreColonia" prefWidth="186.0" text="Nombre colonia" />
-            <TableColumn fx:id="colCalle" prefWidth="220.0" text="Calle" />
-            <TableColumn fx:id="colNombreCliente" prefWidth="271.0" text="Nombre cliente" />
-            <TableColumn fx:id="colCorreo" prefWidth="312.0" text="Correo" />
-            <TableColumn fx:id="colFecha" prefWidth="186.0" text="Fecha de la pipa" />
-            <TableColumn fx:id="colHora" prefWidth="166.0" text="Hora" />
-            <TableColumn fx:id="colFechaCita1" prefWidth="186.0" text="Fecha de la cita" />
+            <TableColumn fx:id="colCapacidad" prefWidth="391.0" text="Capacidad" />
+            <TableColumn fx:id="colPrecio" prefWidth="430.0" text="Precio" />
+            <TableColumn fx:id="colProvedor" prefWidth="520.0" text="Provedor" />
          </columns>
       </TableView>
       <TextField fx:id="tfBuscarPipa" layoutX="53.0" layoutY="297.0" prefHeight="31.0" prefWidth="395.0" promptText="Buscar colonia..." />
@@ -41,7 +37,7 @@
             <Font name="Microsoft JhengHei Light" size="21.0" />
          </font>
       </Label>
-      <Button layoutX="534.0" layoutY="297.0" mnemonicParsing="false" onAction="#btnClicAgendarPipa" prefHeight="39.0" prefWidth="247.0" style="-fx-background-color: lightgreen;" text="Agendar nueva pipa" textFill="#0d6830">
+      <Button layoutX="534.0" layoutY="297.0" mnemonicParsing="false" onAction="#btnClicAgendarPipa" prefHeight="39.0" prefWidth="247.0" style="-fx-background-color: lightgreen;" text="Agendar nueva pipa" textFill="#0d6830" visible="false">
          <font>
             <Font name="Microsoft JhengHei UI" size="19.0" />
          </font></Button>
